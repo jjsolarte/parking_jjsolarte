@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:parking_jjsolarte/ui/home/home_ui.dart';
 import 'package:parking_jjsolarte/ui/splash/splash_ui.dart';
 
 void main() {
@@ -15,7 +18,50 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: LoadingPage(),
+    );
+  }
+}
+
+class LoadingPage extends StatelessWidget {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        if (snapshot.hasError)
+          return Scaffold(
+            body: Center(
+              child: Text('Error ${snapshot.error}'),
+            ),
+          );
+        if (snapshot.connectionState == ConnectionState.done)
+          return StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.active) {
+                  Object user = snapshot.data;
+                  if (user == null) {
+                    return SplashScreen();
+                  } else {
+                    return HomeUI();
+                  }
+                }
+                return Scaffold(
+                  body: Center(
+                    child: Text('Checking Authentication ...'),
+                  ),
+                );
+              });
+        else
+          return Scaffold(
+            body: Center(
+              child: Text('Connecting to the App..'),
+            ),
+          );
+      },
     );
   }
 }

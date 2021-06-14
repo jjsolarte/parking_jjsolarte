@@ -3,7 +3,7 @@ import 'package:parking_jjsolarte/ui/login/login_ui.dart';
 import 'package:parking_jjsolarte/ui/login/register_ui.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 2), (){
       Navigator.of(context)
-          .push(
+          .pushReplacement(
           MaterialPageRoute(builder: (context) => LoginUI()));
     });
     super.initState();

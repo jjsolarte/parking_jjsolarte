@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "932998162824",
+    "firebase_url": "https://fluttertest-4a18c.firebaseio.com",
+    "project_id": "fluttertest-4a18c",
+    "storage_bucket": "fluttertest-4a18c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932998162824:android:1fdcf360358bf3bd41723d",
+        "android_client_info": {
+          "package_name": "com.jjsolarte.parking_jjsolarte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932998162824-tvbu128lobjsr24k69ii83f2nmncgnmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwk2uUHUhJdiG5nbew55d7PPPkx2GxSm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932998162824-tvbu128lobjsr24k69ii83f2nmncgnmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

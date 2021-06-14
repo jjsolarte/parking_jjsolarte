@@ -4,7 +4,7 @@ import 'package:parking_jjsolarte/ui/login/register_ui.dart';
 import 'package:parking_jjsolarte/ui/login/signin_ui.dart';
 
 class LoginUI extends StatefulWidget {
-  const LoginUI({Key? key}) : super(key: key);
+  const LoginUI({Key key}) : super(key: key);
 
   @override
   _LoginUIState createState() => _LoginUIState();
