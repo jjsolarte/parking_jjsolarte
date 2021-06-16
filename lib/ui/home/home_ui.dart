@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:parking_jjsolarte/ui/clima/buscar_ciudad.dart';
 import 'package:parking_jjsolarte/ui/home/activos_ui.dart';
 import 'package:parking_jjsolarte/ui/home/historial_ui.dart';
 import 'package:parking_jjsolarte/ui/home/register_car_ui.dart';
@@ -53,6 +54,17 @@ class _HomeUIState extends State<HomeUI> {
         actions: [
           TextButton(
             onPressed: () async{
+              Navigator.of(context)
+                  .push(
+                  MaterialPageRoute(builder: (context) => BuscarCiudad()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Icon(Icons.wb_sunny),
+            ),
+          ),
+          TextButton(
+            onPressed: () async{
               await FirebaseAuth.instance.signOut();
               Navigator.of(context)
                   .pushReplacement(
@@ -62,7 +74,7 @@ class _HomeUIState extends State<HomeUI> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Icon(Icons.exit_to_app),
             ),
-          )
+          ),
         ],
       ),
       body: Container(

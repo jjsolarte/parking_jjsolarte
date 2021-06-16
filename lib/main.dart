@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:parking_jjsolarte/bloc/ciudad/ciudad_bloc.dart';
+import 'package:parking_jjsolarte/bloc/ciudad/ciudad_logic.dart';
 import 'package:parking_jjsolarte/ui/home/home_ui.dart';
 import 'package:parking_jjsolarte/ui/splash/splash_ui.dart';
 
@@ -12,13 +15,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context){
+          return CiudadBloc(ciudadLogic: CiudadInitialLogic());
+        }),
+      ],
+      child: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: LoadingPage(),
+        ),
       ),
-      home: LoadingPage(),
     );
   }
 }

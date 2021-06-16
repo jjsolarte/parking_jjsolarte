@@ -14,7 +14,7 @@ class _SignInUIState extends State<SignInUI> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  void signIn()async{
+  void signIn() async{
     try {
       UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
